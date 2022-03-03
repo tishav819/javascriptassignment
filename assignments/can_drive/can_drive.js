@@ -11,7 +11,7 @@ function CanDrive(hasDrivingLiscence, isTired, isSober) {
         }
     }
     else{
-        return "You can't drive"
+        return "You cannot drive"
     }
 }
 
