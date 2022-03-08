@@ -15,7 +15,6 @@ item.setAttribute("key",count);
 todos_list.append(item);
 
 count+=1;
-
 item.addEventListener("click",function () {
     todos_list.removeChild(item);
 })
