@@ -15,10 +15,9 @@ item.setAttribute("key",count);
 todos_list.append(item);
 
 count+=1;
-item.addEventListener("click",function () {
+item.addEventListener("dblclick",function () {
     todos_list.removeChild(item);
 })
-
 Input_todo.value=""
 }
 
