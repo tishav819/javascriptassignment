@@ -1,7 +1,8 @@
 function RunCallback(a, b, cb) {
     // Write you code here, you need to add a and b, pass the result into callback function cb as argument return the result
-    let res = a+b
-    return cb(res)
+    let output = a+b
+    return cb(output)
+
 }
 
 module.exports = RunCallback;
