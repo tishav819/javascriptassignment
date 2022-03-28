@@ -1,25 +1,36 @@
-const Input_todo = document.querySelector('input');
-const add_Button = document.querySelector('button');
-const todos_list = document.querySelector('div.todos');
+let getbydiv=document.getElementById('container');
+let select=document.getElementById('todo');
+let completedtodo=[];
+let pendingtodo=[];
 
-let count=0;
-
-function add_todo() {
-let input_value = Input_todo.value;
-if (input_value==""){
-    return
-}
-let item=document.createElement('p');
-item.innerHTML=input_value;
-item.setAttribute("key",count);
-todos_list.append(item);
-
-count+=1;
-item.addEventListener("click",function () {
-    todos_list.removeChild(item);
+fetch('https://jsonplaceholder.typicode.com/todos')  
+.then(response => response.json())
+.then(data => {
+    for( let i=0;i<data.length;i++){
+        if(data[i].completed==false){
+            pendingtodo.push(data[i].title);
+        }else{
+            completedtodo.push(data[i].title);
+        }
+    }
 })
 
-Input_todo.value=""
-}
 
-add_Button.addEventListener("click",add_todo)
+select.addEventListener('change',function(){
+    let value1=select.value;
+    if(value1==="Completed"){
+        getbydiv.innerHTML="";
+        for(let i=0;i<completedtodo.length;i++){
+            let tag1=document.createElement('li');
+            tag1.innerHTML=completedtodo[i];
+            getbydiv.appendChild(tag1);
+        }
+    }else if(value1==="Pending"){
+        getbydiv.innerHTML="";
+        for(let i=0;i<pendingtodo.length;i++){
+            let tag1=document.createElement('li');
+            tag1.innerHTML=pendingtodo[i];
+            getbydiv.appendChild(tag1);
+        }
+    }
+})
